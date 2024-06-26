@@ -10,8 +10,8 @@ classof(::IsInstance, obj) = error("classof not implemented for ", typeof(obj))
 classof(::IsNotInstance, obj) = BuiltIn(typeof(obj))
 
 getslot(obj::T, ::Symbol) where {T} = classof(MaybeInstance(T), obj)
-getslot(::IsInstance, obj, ::Symbol) = error("classof not implemented for ", typeof(obj))
-getslot(::IsNotInstance, obj, ::Symbol) = error("classof not available for ", typeof(obj))
+getslot(::IsInstance, obj, ::Symbol) = error("getslot not implemented for ", typeof(obj))
+getslot(::IsNotInstance, obj, ::Symbol) = error("getslot not available for ", typeof(obj))
 
 # Need a parent abstract type to implement generic methods for Julia stuff like Base.show and getproperty
 # Any type subtyping this will implement the MaybeInstance trait
