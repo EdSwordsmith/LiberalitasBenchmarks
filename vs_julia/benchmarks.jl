@@ -66,7 +66,7 @@ function plot_results!(ax, results, label)
 end
 
 function plot_figure(results)
-    f = Figure(size=(1200, 450))
+    f = Figure(size=(800, 450))
     limits = (0, nothing, 0, nothing)
 
     ax1 = Axis(f[1, 1], xlabel="Iteration Count", ylabel="Execution Time (ms)"; limits)

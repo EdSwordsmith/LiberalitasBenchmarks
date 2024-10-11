@@ -141,7 +141,18 @@
     (attack-mult water-gun charmander)))
 
 (ql:quickload "trivial-benchmark")
+
 (let ((charmander (make-instance 'charmander))
       (water-gun (make-instance 'water)))
+  (trivial-benchmark:with-timing (1000)
+    (benchmark-this 1 water-gun charmander))
+  (trivial-benchmark:with-timing (1000)
+    (benchmark-this 20000 water-gun charmander))
+  (trivial-benchmark:with-timing (1000)
+    (benchmark-this 40000 water-gun charmander))
+  (trivial-benchmark:with-timing (1000)
+    (benchmark-this 60000 water-gun charmander))
+  (trivial-benchmark:with-timing (1000)
+    (benchmark-this 80000 water-gun charmander))
   (trivial-benchmark:with-timing (1000)
     (benchmark-this 100000 water-gun charmander)))

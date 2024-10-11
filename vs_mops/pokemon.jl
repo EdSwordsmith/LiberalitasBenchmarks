@@ -146,5 +146,13 @@ end
 
 charmander = make(Charmander)
 water_gun = make(Water)
+attack_n_times(1, charmander, water_gun)
 
-@benchmark attack_n_times(100000, $charmander, $water_gun)
+suite = BenchmarkGroup()
+for n in 0:5
+    iters = n == 0 ? 1 : n * 20000
+    suite[iters] = @benchmarkable attack_n_times($iters, $charmander, $water_gun)
+end
+
+results = run(suite, verbose=true)
+BenchmarkTools.save("liberalitas.json", results)
