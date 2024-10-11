@@ -140,5 +140,30 @@
 ;; benchmarking
 (let ((charmander (make charmander))
       (water-gun (make water)))
-  (time
-    (dotimes (x 100000) (attack-mult water-gun charmander))))
+  (print 1)
+  (dotimes (sample 500)
+           (time (attack-mult water-gun charmander)))
+
+  (print 20000)
+    (dotimes (sample 500)
+      (time (dotimes (x 20000) (attack-mult water-gun charmander))))
+
+  (print 40000)
+  (dotimes (sample 500)
+    (time
+      (dotimes (x 40000) (attack-mult water-gun charmander))))
+
+  (print 60000)
+  (dotimes (sample 500)
+    (time
+      (dotimes (x 60000) (attack-mult water-gun charmander))))
+
+  (print 80000)
+  (dotimes (sample 500)
+    (time
+      (dotimes (x 80000) (attack-mult water-gun charmander))))
+
+  (print 100000)
+  (dotimes (sample 500)
+    (time
+      (dotimes (x 100000) (attack-mult water-gun charmander)))))
